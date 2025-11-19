@@ -1,0 +1,82 @@
+
+<nz-layout class="layout">
+
+  <nz-layout>
+    <nz-header class="header">
+      <span class="title">Mini Analytics</span>
+    </nz-header>
+
+    <nz-content class="content">
+      <div class="inner-content">
+
+        <!-- Summary Cards Row -->
+        <div class="cards-row">
+          <nz-card nzTitle="Total Sales" class="stat-card">
+            <h2>{{ totalSales }}</h2>
+          </nz-card>
+
+          <nz-card nzTitle="Total Users" class="stat-card">
+            <h2>{{ totalUsers }}</h2>
+          </nz-card>
+
+          <nz-card nzTitle="Orders Today" class="stat-card">
+            <h2>{{ ordersToday }}</h2>
+          </nz-card>
+        </div>
+
+        <!-- Table Controls -->
+        <div class="table-controls" style="margin-bottom: 10px; display: flex; justify-content: flex-end;">
+          <label style="margin-right: 8px;">Rows per page:</label>
+
+          <!-- FIXED nz-select -->
+          <nz-select
+            [(ngModel)]="pageSize"
+            [nzOptions]="pageSizeSelectOptions"
+            style="width: 80px;"
+          >
+          </nz-select>
+
+        </div>
+
+        <!-- Table -->
+        <nz-table
+          [nzData]="tableData | slice:(pageIndex-1)*pageSize:(pageIndex*pageSize)"
+          [nzBordered]="true"
+        >
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tableData | slice:(pageIndex-1)*pageSize:(pageIndex*pageSize)">
+              <td>{{ item.id }}</td>
+              <td>{{ item.customer }}</td>
+              <td>{{ item.amount }}</td>
+              <td>{{ item.status }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+
+        <!-- FIXED Pagination -->
+        <nz-pagination
+          [nzPageIndex]="pageIndex"
+          [nzPageSize]="pageSize"
+          [nzTotal]="tableData.length"
+          [nzPageSizeOptions]="pageSizeOptions"
+          [nzShowSizeChanger]="true"
+          (nzPageIndexChange)="onPageIndexChange($event)"
+          (nzPageSizeChange)="onPageSizeChange($event)"
+          style="margin-top: 10px; text-align: right;"
+        >
+        </nz-pagination>
+
+      </div>
+    </nz-content>
+  </nz-layout>
+
+</nz-layout>
+

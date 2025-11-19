@@ -1,0 +1,13 @@
+<div class="signup-container">
+  <h2>Signup</h2>
+  <form (ngSubmit)="signup()">
+    <input nz-input placeholder="Name" [(ngModel)]="form.name" name="name" required />
+    <input nz-input placeholder="Email" [(ngModel)]="form.email" name="email" type="email" required />
+    <input nz-input type="password" placeholder="Password" [(ngModel)]="form.password" name="password" required />
+    <button nz-button nzType="primary" type="submit">Signup</button>
+  </form>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <p>Already have an account? <a [routerLink]="['/login']">Login here</a></p>
+</div>

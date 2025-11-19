@@ -1,0 +1,27 @@
+.chart-box {
+  width: 100%;
+  max-width: 900px;
+  height: 450px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; // stack h2 on top of canvas
+  align-items: center;    // center horizontally
+  justify-content: flex-start; // align canvas below h2
+}
+
+.chart-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+canvas {
+  width: 100% !important;
+  height: calc(100% - 60px) !important; // leave space for h2
+}

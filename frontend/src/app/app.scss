@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nz-layout.layout {
+  height: 100vh;
+}
+
+nz-sider.sider {
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  background: #001529;
+  padding: 0;
+  height: 100vh;
+  position: fixed;        // Fixed sidebar
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;       // Scroll if menu is long
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  z-index: 10;
+}
+
+.logo {
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  background: #001529;
+  margin: 0;
+}
+
+.top-menu, .bottom-menu {
+  padding: 0;
+}
+
+ul[nz-menu] {
+  margin: 0;
+}
+
+li[nz-menu-item] {
+  padding: 0 24px;
+}
+
+/* Logged-in content fills remaining space */
+nz-layout > nz-content {
+  margin-left: 220px;       // Offset for sidebar
+  padding: 24px;
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 100%;
+}
+
+/* Header */
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.app-header {
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+
+.header-trigger {
+  height: 64px;
+  padding: 20px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+/* Login / Signup layout full screen */
+.guest-layout nz-layout > nz-content {
+  margin: 0;               // Full width
+  padding: 24px;
+  min-height: 100vh;
+  background: #f0f2f5;
+}
